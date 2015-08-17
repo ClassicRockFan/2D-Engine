@@ -1,5 +1,8 @@
 package com.threesidedsquare.engine2D.core;
 
+import com.threesidedsquare.engine2D.object.component.GameObject;
+import com.threesidedsquare.engine2D.rendering.RenderingEngine;
+
 import java.util.ArrayList;
 
 public class GameScene {
@@ -18,18 +21,18 @@ public class GameScene {
         this.game = game;
     }
 
-    public void input(){
+    public void input(float delta){
         for(GameObject object : objects)
-            object.input();
+            object.input(delta);
     }
 
-    public void update(){
+    public void update(float delta){
         for(GameObject object : objects)
-            object.update();
+            object.update(delta);
     }
 
-    public void render(){
-        game.getEngine().getRenderingEngine().render(getObjects());
+    public void render(RenderingEngine engine){
+        engine.render(getObjects());
     }
 
     public ArrayList<GameObject> getObjects() {

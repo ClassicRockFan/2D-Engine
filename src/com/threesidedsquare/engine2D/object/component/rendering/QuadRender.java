@@ -1,10 +1,10 @@
-package game;
+package com.threesidedsquare.engine2D.object.component.rendering;
 
-import com.threesidedsquare.engine2D.core.GameComponent;
 import com.threesidedsquare.engine2D.core.math.Vector2f;
-import com.threesidedsquare.engine2D.core.primitive.RectanglePrimitive;
+import com.threesidedsquare.engine2D.object.GameComponent;
+import com.threesidedsquare.engine2D.rendering.primitive.RectanglePrimitive;
 
-public class QuadRender extends GameComponent{
+public class QuadRender extends GameComponent {
 
     private float minX;
     private float miny;

@@ -1,4 +1,4 @@
-package com.threesidedsquare.engine2D.core;
+package com.threesidedsquare.engine2D.rendering;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -19,7 +19,7 @@ public class Window {
 
     public static void update(){
         Display.update();
-        Display.sync(60);
+        //Display.sync(60);
     }
 
     public static boolean isCloseRequested(){

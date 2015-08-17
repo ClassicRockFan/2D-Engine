@@ -1,7 +1,6 @@
-package com.threesidedsquare.engine2D.core;
+package com.threesidedsquare.engine2D.rendering;
 
-import com.threesidedsquare.engine2D.administrative.Logging;
-import com.threesidedsquare.engine2D.core.primitive.RectanglePrimitive;
+import com.threesidedsquare.engine2D.object.component.GameObject;
 
 import java.util.ArrayList;
 

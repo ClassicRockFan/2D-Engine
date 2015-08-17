@@ -4,8 +4,9 @@ import com.threesidedsquare.engine2D.core.CoreEngine;
 import com.threesidedsquare.engine2D.administrative.ConsoleWindow;
 import com.threesidedsquare.engine2D.administrative.Logging;
 import com.threesidedsquare.engine2D.core.Game;
-import com.threesidedsquare.engine2D.core.GameObject;
+import com.threesidedsquare.engine2D.object.component.GameObject;
 import com.threesidedsquare.engine2D.core.math.Vector3f;
+import com.threesidedsquare.engine2D.object.component.rendering.QuadRender;
 
 import java.util.Random;
 
@@ -16,43 +17,25 @@ public class Main extends Game{
         Logging.printLog("Successfully Linked Natives");
 
         ConsoleWindow.getInstance().setVisible(true);
-        CoreEngine engine = new CoreEngine(800, 600, "2D Game Engine", new Main());
+        CoreEngine engine = new CoreEngine(800, 600, "2D Game Engine", 60, new Main());
         engine.start();
     }
 
     @Override
     public void init(CoreEngine engine) {
         super.init(engine);
-
-        Random r = new Random();
-        float RANGE = 30;
-        float RANGE2 = 800;
-
-        for(int i = 0; i < 10000; i++) {
-            float minX = r.nextFloat() * RANGE;
-            float minY = r.nextFloat() * RANGE;
-            float maxX = r.nextFloat() * RANGE;
-            float maxY = r.nextFloat() * RANGE;
-            float red = r.nextFloat();
-            float green = r.nextFloat();
-            float blue = r.nextFloat();
-
-            GameObject object = new GameObject().addComponent(new QuadRender(minX, minY, maxX, maxY, red, green, blue));
-
-            object.getTransform().setPosition(new Vector3f(r.nextFloat() * RANGE2, r.nextFloat() * RANGE2, r.nextFloat() * RANGE2));
-
-            addObject(object);
-        }
+        addScene(new TestScene1());
+        //setActiveScene("TestScene1");
     }
 
     @Override
-    public void input() {
-        super.input();
+    public void input(float delta) {
+        super.input(delta);
     }
 
     @Override
-    public void update() {
-        super.update();
+    public void update(float delta) {
+        super.update(delta);
     }
 
     @Override

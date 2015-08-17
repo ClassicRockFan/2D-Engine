@@ -1,14 +1,17 @@
-package com.threesidedsquare.engine2D.core;
+package com.threesidedsquare.engine2D.object;
+
+import com.threesidedsquare.engine2D.core.Transform;
+import com.threesidedsquare.engine2D.object.component.GameObject;
 
 public abstract class GameComponent {
 
     private GameObject parent;
 
-    public void input(){
+    public void input(float delta){
 
     }
 
-    public void update(){
+    public void update(float delta){
 
     }
 

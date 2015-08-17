@@ -1,5 +1,7 @@
 package com.threesidedsquare.engine2D.core;
 
+import com.threesidedsquare.engine2D.object.component.GameObject;
+
 import java.util.HashMap;
 
 public abstract class Game {
@@ -15,16 +17,16 @@ public abstract class Game {
         activeScene.init(this);
     }
 
-    public void input(){
-        activeScene.input();
+    public void input(float delta){
+        activeScene.input(delta);
     }
 
-    public void update(){
-        activeScene.update();
+    public void update(float delta){
+        activeScene.update(delta);
     }
 
     public void render(){
-        activeScene.render();
+        activeScene.render(engine.getRenderingEngine());
     }
 
     public CoreEngine getEngine() {

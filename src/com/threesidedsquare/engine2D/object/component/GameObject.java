@@ -1,6 +1,8 @@
-package com.threesidedsquare.engine2D.core;
+package com.threesidedsquare.engine2D.object.component;
 
-import java.util.AbstractCollection;
+import com.threesidedsquare.engine2D.core.Transform;
+import com.threesidedsquare.engine2D.object.GameComponent;
+
 import java.util.ArrayList;
 
 public class GameObject {
@@ -19,14 +21,14 @@ public class GameObject {
         counter++;
     }
 
-    public void input(){
+    public void input(float delta){
         for(GameComponent component: components)
-            component.input();
+            component.input(delta);
     }
 
-    public void update(){
+    public void update(float delta){
         for(GameComponent component: components)
-            component.update();
+            component.update(delta);
     }
 
     public void render(){

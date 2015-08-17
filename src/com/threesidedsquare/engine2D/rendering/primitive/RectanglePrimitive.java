@@ -1,4 +1,4 @@
-package com.threesidedsquare.engine2D.core.primitive;
+package com.threesidedsquare.engine2D.rendering.primitive;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glEnd;
