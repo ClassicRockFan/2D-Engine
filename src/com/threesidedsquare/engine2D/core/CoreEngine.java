@@ -2,6 +2,7 @@ package com.threesidedsquare.engine2D.core;
 
 import com.threesidedsquare.engine2D.administrative.Logging;
 import com.threesidedsquare.engine2D.administrative.Time;
+import com.threesidedsquare.engine2D.physics.PhysicsEngine;
 import com.threesidedsquare.engine2D.rendering.*;
 
 public class CoreEngine {
@@ -9,6 +10,7 @@ public class CoreEngine {
     private boolean running;
     private Game game;
     private RenderingEngine renderingEngine;
+    private PhysicsEngine physicsEngine;
     private double frameTime;
     private double totalTime;
     private int numFrames;
@@ -18,6 +20,7 @@ public class CoreEngine {
         this.running = false;
         this.frameTime = 1 / frameCap;
         this.renderingEngine = new RenderingEngine();
+        this.physicsEngine = new PhysicsEngine(this);
         this.game = game;
     }
 
@@ -38,7 +41,6 @@ public class CoreEngine {
     public void run(){
         Logging.printLog("Starting CoreEngine");
         RenderingEngine.initGL();
-
 
         this.renderingEngine = new RenderingEngine();
         int frames = 0;
@@ -72,6 +74,7 @@ public class CoreEngine {
 
                 game.input((float) frameTime);
                 game.update((float) frameTime);
+                physicsEngine.doPhysics((float) frameTime);
 
                 Input.update();
 
@@ -85,8 +88,8 @@ public class CoreEngine {
                     frames = 0;
                     frameCounter = 0;
 
-                    if(numFrames > 1000)
-                        stop();
+//                    if(numFrames > 1000)
+//                        stop();
                 }
             }
 

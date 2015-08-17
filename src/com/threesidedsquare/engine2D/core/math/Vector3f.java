@@ -64,6 +64,10 @@ public class Vector3f {
         return new Vector2f(z, y);
     }
 
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ", " + z + ")";
+    }
 
     //Getters and Setters
     public float getX() {

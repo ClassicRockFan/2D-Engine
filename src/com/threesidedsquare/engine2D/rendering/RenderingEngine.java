@@ -9,7 +9,6 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class RenderingEngine {
 
-    int numIterations = 0;
 
     public static void initGL(){
         glMatrixMode(GL_PROJECTION_MATRIX);
@@ -31,8 +30,6 @@ public class RenderingEngine {
             object.render();
             //Logging.printLog("Rendering object - " + object.toString());
         }
-        //Logging.printLog("Rendering: " + numIterations);
-        numIterations ++;
 
         Window.update();
     }

@@ -1,7 +1,10 @@
 package com.threesidedsquare.engine2D.object;
 
 import com.threesidedsquare.engine2D.core.Transform;
+import com.threesidedsquare.engine2D.core.math.Vector2f;
 import com.threesidedsquare.engine2D.object.component.GameComponent;
+import com.threesidedsquare.engine2D.physics.AABB;
+import com.threesidedsquare.engine2D.physics.PhysicsComponent;
 
 import java.util.ArrayList;
 
@@ -12,11 +15,19 @@ public class GameObject {
     private int id;
     private Transform transform;
     private ArrayList<GameComponent> components;
+    private AABB aabb;
+    private PhysicsComponent component;
 
     public GameObject() {
+        this(new AABB(new Vector2f(-1, -1), new Vector2f(1, 1)));
+    }
+
+    public GameObject(AABB aabb) {
         this.id = counter;
         this.components = new ArrayList<>();
         this.transform = new Transform();
+        this.aabb = aabb;
+        this.component = null;
 
         counter++;
     }
@@ -29,6 +40,8 @@ public class GameObject {
     public void update(float delta){
         for(GameComponent component: components)
             component.update(delta);
+
+        aabb.update(getTransform().getPosition().XY());
     }
 
     public void render(){
@@ -60,6 +73,22 @@ public class GameObject {
 
     public int getId() {
         return id;
+    }
+
+    public AABB getAabb() {
+        return aabb;
+    }
+
+    public void setAabb(AABB aabb) {
+        this.aabb = aabb;
+    }
+
+    public PhysicsComponent getPhysicsComponent() {
+        return component;
+    }
+
+    public void setPhysicsComponent(PhysicsComponent component) {
+        this.component = component;
     }
 
     @Override

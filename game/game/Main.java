@@ -21,11 +21,14 @@ public class Main extends Game{
     @Override
     public void init(CoreEngine engine) {
         super.init(engine);
-        addScene(new RenderTestScene());
-        setActiveScene(RenderTestScene.NAME);
+//        addScene(new RenderTestScene());
+//        setActiveScene(RenderTestScene.NAME);
 
-        addScene(new TextureTestScene());
-        setActiveScene(TextureTestScene.NAME);
+//        addScene(new TextureTestScene());
+        //setActiveScene(TextureTestScene.NAME);
+
+        addScene(new PhysicsTestScene());
+        setActiveScene(PhysicsTestScene.NAME);
     }
 
     @Override
