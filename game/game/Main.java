@@ -4,11 +4,6 @@ import com.threesidedsquare.engine2D.core.CoreEngine;
 import com.threesidedsquare.engine2D.administrative.ConsoleWindow;
 import com.threesidedsquare.engine2D.administrative.Logging;
 import com.threesidedsquare.engine2D.core.Game;
-import com.threesidedsquare.engine2D.object.component.GameObject;
-import com.threesidedsquare.engine2D.core.math.Vector3f;
-import com.threesidedsquare.engine2D.object.component.rendering.QuadRender;
-
-import java.util.Random;
 
 public class Main extends Game{
 
@@ -24,8 +19,11 @@ public class Main extends Game{
     @Override
     public void init(CoreEngine engine) {
         super.init(engine);
-        addScene(new TestScene1());
-        //setActiveScene("TestScene1");
+        addScene(new RenderTestScene());
+        setActiveScene(RenderTestScene.NAME);
+
+        addScene(new TextureTestScene());
+        setActiveScene(TextureTestScene.NAME);
     }
 
     @Override

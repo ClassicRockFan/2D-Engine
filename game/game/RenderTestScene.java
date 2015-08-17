@@ -9,10 +9,12 @@ import com.threesidedsquare.engine2D.object.component.rendering.QuadRender;
 
 import java.util.Random;
 
-public class TestScene1 extends GameScene{
+public class RenderTestScene extends GameScene{
 
-    public TestScene1() {
-        super("TestScene1");
+    public static final String NAME = "RenderTest";
+
+    public RenderTestScene() {
+        super(NAME);
     }
 
     @Override

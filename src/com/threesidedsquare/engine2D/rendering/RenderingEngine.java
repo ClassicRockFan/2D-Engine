@@ -17,6 +17,8 @@ public class RenderingEngine {
         glMatrixMode(GL_MODELVIEW);
 
         glDisable(GL_DEPTH_TEST);
+        glEnable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
     }
 
 
