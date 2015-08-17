@@ -10,6 +10,8 @@ public class CoreEngine {
     private Game game;
     private RenderingEngine renderingEngine;
     private double frameTime;
+    private double totalTime;
+    private int numFrames;
 
     public CoreEngine(int width, int height, String title, double frameCap, Game game) {
         Window.createWindow(width, height, title);
@@ -46,6 +48,7 @@ public class CoreEngine {
 
         double lastTime = Time.getTime();
         double unprocessedTime = 0;
+        totalTime = 0;
 
         while (running) {
             boolean render = false;
@@ -56,6 +59,7 @@ public class CoreEngine {
 
             unprocessedTime += passedTime;
             frameCounter += passedTime;
+            totalTime += passedTime;
 
             while (unprocessedTime > frameTime) {
                 render = true;
@@ -80,12 +84,16 @@ public class CoreEngine {
 
                     frames = 0;
                     frameCounter = 0;
+
+                    if(numFrames > 1000)
+                        stop();
                 }
             }
 
             if (render) {
                 game.render();
                 frames++;
+                numFrames ++;
             } else {
                 try {
                     Thread.sleep(1);
@@ -98,6 +106,11 @@ public class CoreEngine {
     }
 
     private void cleanUp(){
+        Logging.printLog("Number of frames - " + numFrames);
+        Logging.printLog("Average FPS - " + numFrames/totalTime);
+        Logging.printLog("Total Time - " + totalTime + " s");
+        Logging.printLog("Average Time - " + ((1000.0 * totalTime) / (double) numFrames) + " ms");
+
         Window.cleanUp();
         System.gc();
         System.exit(0);

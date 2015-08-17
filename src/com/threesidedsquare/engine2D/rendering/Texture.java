@@ -20,6 +20,8 @@ public class Texture {
 
     private int id;
     private String path;
+    private int width;
+    private int height;
 
     public Texture(String path){
         this(path, GL_LINEAR);
@@ -34,8 +36,8 @@ public class Texture {
         Logging.printLog("Loading texture at path - " + path);
         try {
             BufferedImage image = ImageIO.read(new File(path));
-            int width = image.getWidth();
-            int height = image.getHeight();
+            width = image.getWidth();
+            height = image.getHeight();
 
             int[] pixels = image.getRGB(0, 0, width, height, null, 0, width);
 
@@ -89,5 +91,13 @@ public class Texture {
 
     public String getPath() {
         return path;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

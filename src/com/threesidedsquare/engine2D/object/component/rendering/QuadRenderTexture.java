@@ -1,7 +1,8 @@
 package com.threesidedsquare.engine2D.object.component.rendering;
 
 import com.threesidedsquare.engine2D.core.math.Vector2f;
-import com.threesidedsquare.engine2D.object.GameComponent;
+import com.threesidedsquare.engine2D.core.math.Vector3f;
+import com.threesidedsquare.engine2D.object.component.GameComponent;
 import com.threesidedsquare.engine2D.rendering.Texture;
 import com.threesidedsquare.engine2D.rendering.primitive.RectanglePrimitive;
 
@@ -26,9 +27,10 @@ public class QuadRenderTexture extends GameComponent{
     public void render() {
         super.render();
 
-        Vector2f XY = getTransform().getPosition().XY();
+        Vector3f XY = getTransform().getPosition();
+        Vector2f scale = getTransform().getScale().XY();
 
-        RectanglePrimitive.render(minX + XY.getX(), miny + XY.getY(), maxX + XY.getX(), maxY + XY.getY(), texture);
+        RectanglePrimitive.render((minX * scale.getX() + XY.getX()), (miny) * scale.getY() + XY.getY(), (maxX * scale.getX() + XY.getX()), (maxY * scale.getY() + XY.getY()), XY.getZ(), texture);
     }
 
 }

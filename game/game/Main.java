@@ -4,6 +4,8 @@ import com.threesidedsquare.engine2D.core.CoreEngine;
 import com.threesidedsquare.engine2D.administrative.ConsoleWindow;
 import com.threesidedsquare.engine2D.administrative.Logging;
 import com.threesidedsquare.engine2D.core.Game;
+import com.threesidedsquare.engine2D.core.Input;
+import com.threesidedsquare.engine2D.core.math.Vector2f;
 
 public class Main extends Game{
 
@@ -29,6 +31,12 @@ public class Main extends Game{
     @Override
     public void input(float delta) {
         super.input(delta);
+
+        if(Input.getMouseDown(0)){
+            Vector2f pos = Input.getMousePosition();
+
+            Logging.printLog("Mouse Pos - (" + pos.getX() + ", " + pos.getY() + ")");
+        }
     }
 
     @Override

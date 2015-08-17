@@ -1,10 +1,9 @@
 package game;
 
-import com.threesidedsquare.engine2D.core.CoreEngine;
 import com.threesidedsquare.engine2D.core.Game;
 import com.threesidedsquare.engine2D.core.GameScene;
 import com.threesidedsquare.engine2D.core.math.Vector3f;
-import com.threesidedsquare.engine2D.object.component.GameObject;
+import com.threesidedsquare.engine2D.object.GameObject;
 import com.threesidedsquare.engine2D.object.component.rendering.QuadRender;
 
 import java.util.Random;

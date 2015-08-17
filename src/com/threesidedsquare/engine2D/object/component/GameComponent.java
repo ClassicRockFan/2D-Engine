@@ -1,7 +1,7 @@
-package com.threesidedsquare.engine2D.object;
+package com.threesidedsquare.engine2D.object.component;
 
 import com.threesidedsquare.engine2D.core.Transform;
-import com.threesidedsquare.engine2D.object.component.GameObject;
+import com.threesidedsquare.engine2D.object.GameObject;
 
 public abstract class GameComponent {
 

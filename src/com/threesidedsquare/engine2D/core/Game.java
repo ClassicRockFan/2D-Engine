@@ -1,6 +1,6 @@
 package com.threesidedsquare.engine2D.core;
 
-import com.threesidedsquare.engine2D.object.component.GameObject;
+import com.threesidedsquare.engine2D.object.GameObject;
 
 import java.util.HashMap;
 

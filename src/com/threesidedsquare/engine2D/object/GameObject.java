@@ -1,7 +1,7 @@
-package com.threesidedsquare.engine2D.object.component;
+package com.threesidedsquare.engine2D.object;
 
 import com.threesidedsquare.engine2D.core.Transform;
-import com.threesidedsquare.engine2D.object.GameComponent;
+import com.threesidedsquare.engine2D.object.component.GameComponent;
 
 import java.util.ArrayList;
 
@@ -60,5 +60,10 @@ public class GameObject {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "GameObject_" + id;
     }
 }
