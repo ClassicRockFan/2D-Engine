@@ -6,6 +6,7 @@ import com.threesidedsquare.engine2D.object.GameObject;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Quadtree {
     public static final int NUM_TO_STORE = 6;
@@ -38,7 +39,7 @@ public class Quadtree {
     }
 
     public Set<GameObject> queryRange(AABB range){
-        return queryRange(range, new HashSet<GameObject>());
+        return queryRange(range, new TreeSet<GameObject>());
     }
 
     public Set<GameObject> queryRange(AABB range, Set<GameObject> result){
@@ -48,9 +49,9 @@ public class Quadtree {
                     children[i].queryRange(range, result);
                 }
 
-            for(int i = 0; i < numStored; i++){
-                result.add(objects[i]);
-            }
+            for(int i = 0; i < numStored; i++)
+                if(objects[i].getAabb().doesIntersect(range))
+                    result.add(objects[i]);
         }
 
         return result;

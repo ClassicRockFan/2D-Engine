@@ -9,12 +9,20 @@ import static org.lwjgl.opengl.GL11.glVertex2f;
 
 public class RectanglePrimitive{
 
+    public static final float NO_ALPHA = -1;
+
     public static void render(float minX, float minY, float maxX, float maxY, float z) {
         render(minX, minY, maxX, maxY, z, 1, 1, 1);
     }
 
     public static void render(float minX, float minY, float maxX, float maxY, float z, float r, float g, float b){
-        glColor3f(r, g, b);
+        render(minX, minY, maxX, maxY, z, r, g, b, NO_ALPHA);
+    }
+
+    public static void render(float minX, float minY, float maxX, float maxY, float z, float r, float g, float b, float a){
+        if(a == NO_ALPHA)
+            glDisable(GL_BLEND);
+        glColor4f(r, g, b, a);
 
         glBegin(GL_QUADS);
         {
@@ -24,6 +32,10 @@ public class RectanglePrimitive{
             glVertex3f(maxX, minY, z);
         }
         glEnd();
+
+        if(a == NO_ALPHA)
+            glEnable(GL_BLEND);
+
     }
 
     public static void render(float minX, float minY, float maxX, float maxY, float z, Texture texture){

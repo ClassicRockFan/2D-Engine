@@ -84,7 +84,9 @@ public class AABB {
         return result;
     }
 
-    public void update(Vector2f pos){
+    public void update(Vector2f pos, boolean print){
+        if(print)
+            Logging.printLog("OLd aabb - " + this);
         AABB newAABB = generateFromCenter(pos, getWidth(), getHeight());
 
         minX = newAABB.minX;
@@ -93,6 +95,13 @@ public class AABB {
         maxY = newAABB.maxY;
 
         center = pos;
+
+        if(print)
+            Logging.printLog("new AABB - " + this);
+    }
+
+    public void update(Vector2f pos){
+        update(pos, false);
     }
 
     public boolean doesIntersect(AABB other){

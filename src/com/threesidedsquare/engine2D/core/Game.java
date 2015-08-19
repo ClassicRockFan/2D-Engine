@@ -1,5 +1,6 @@
 package com.threesidedsquare.engine2D.core;
 
+import com.threesidedsquare.engine2D.administrative.Logging;
 import com.threesidedsquare.engine2D.object.GameObject;
 
 import java.util.HashMap;
@@ -43,6 +44,12 @@ public abstract class Game {
 
     public void setActiveScene(String sceneName) {
         this.activeScene = scenes.get(sceneName);
+        if(activeScene == null) {
+            Logging.printLog("Invalid Scene");
+            new Exception().printStackTrace();
+            engine.stop();
+        }
+        activeScene.load();
     }
 
     public GameScene addScene(GameScene scene){

@@ -1,5 +1,6 @@
 package com.threesidedsquare.engine2D.core;
 
+import com.threesidedsquare.engine2D.object.GameCamera;
 import com.threesidedsquare.engine2D.object.GameObject;
 import com.threesidedsquare.engine2D.physics.AABB;
 import com.threesidedsquare.engine2D.physics.Quadtree;
@@ -7,6 +8,7 @@ import com.threesidedsquare.engine2D.rendering.RenderingEngine;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
 
 public class GameScene {
 
@@ -16,11 +18,13 @@ public class GameScene {
     private Quadtree quadtree;
 
     private String name;
+    private GameCamera camera;
 
     public GameScene(String name) {
         this.name = name;
         objects = new ArrayList<>();
         this.quadtree = new Quadtree(new AABB(-1, -1, 1, 1), 0);
+        this.camera = new GameCamera();
     }
 
     public void init(Game game){
@@ -32,13 +36,32 @@ public class GameScene {
             object.input(delta);
     }
 
+    public void load(){
+        getGame().getEngine().getRenderingEngine().setCamera(camera);
+    }
+
     public void update(float delta){
-        for(GameObject object : objects)
+        Iterator it = quadtree.queryAll().iterator();
+
+        while(it.hasNext()){
+            GameObject object = (GameObject) it.next();
+
             object.update(delta);
+        }
     }
 
     public void render(RenderingEngine engine){
-        engine.render(getObjects());
+        Set<GameObject> objects = quadtree.queryRange(engine.getCamera().getFrustum());
+
+        ArrayList<GameObject> drawList = new ArrayList<>();
+
+        Iterator it = objects.iterator();
+
+        while (it.hasNext()){
+            drawList.add((GameObject)it.next());
+        }
+
+        engine.render(drawList);
     }
 
     public ArrayList<GameObject> getObjects() {
@@ -48,6 +71,7 @@ public class GameScene {
     public GameObject addObject(GameObject object){
         objects.add(object);
         quadtree.add(object);
+        object.setScene(this);
         return object;
     }
 
@@ -74,5 +98,13 @@ public class GameScene {
 
     public Game getGame() {
         return game;
+    }
+
+    public GameCamera getCamera() {
+        return camera;
+    }
+
+    public void setCamera(GameCamera camera) {
+        this.camera = camera;
     }
 }

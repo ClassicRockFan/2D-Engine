@@ -1,6 +1,8 @@
 package com.threesidedsquare.engine2D.rendering;
 
 import com.threesidedsquare.engine2D.administrative.Logging;
+import com.threesidedsquare.engine2D.core.math.Vector3f;
+import com.threesidedsquare.engine2D.object.GameCamera;
 import com.threesidedsquare.engine2D.object.GameObject;
 
 import java.util.ArrayList;
@@ -8,23 +10,23 @@ import java.util.ArrayList;
 import static org.lwjgl.opengl.GL11.*;
 
 public class RenderingEngine {
-
+    private GameCamera camera;
 
     public static void initGL(){
-        glMatrixMode(GL_PROJECTION_MATRIX);
-        glLoadIdentity();
-        glOrtho(-Window.getWidth()/2, Window.getWidth()/2, -Window.getHeight()/2, Window.getHeight()/2, -1, 1);
-        glMatrixMode(GL_MODELVIEW);
-
         glDisable(GL_DEPTH_TEST);
         glEnable(GL_TEXTURE_2D);
         glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
     }
-
 
     public void render(ArrayList<GameObject> objects) {
         glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        if(camera != null)
+            camera.tranformView();
+
+//        Logging.printLog("Num Objects to Render - " + objects.size());
 
         for(GameObject object : objects) {
             object.render();
@@ -66,5 +68,14 @@ public class RenderingEngine {
         }
 
         return  result;
+    }
+
+    public GameCamera getCamera() {
+        return camera;
+    }
+
+    public void setCamera(GameCamera camera) {
+        this.camera = camera;
+        this.camera.useView();
     }
 }

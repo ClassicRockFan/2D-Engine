@@ -14,8 +14,13 @@ public class QuadRender extends GameComponent {
     private float r;
     private float g;
     private float b;
+    private float a;
 
-    public QuadRender(float minX, float miny, float maxX, float maxY, float r, float g, float b) {
+    public QuadRender(float minX, float miny, float maxX, float maxY, float r, float g, float b){
+        this(minX, miny, maxX, maxY, r, g, b, RectanglePrimitive.NO_ALPHA);
+    }
+
+    public QuadRender(float minX, float miny, float maxX, float maxY, float r, float g, float b, float a) {
         super();
         this.minX = minX;
         this.miny = miny;
@@ -24,6 +29,7 @@ public class QuadRender extends GameComponent {
         this.r = r;
         this.g = g;
         this.b = b;
+        this.a = a;
     }
 
     @Override
@@ -33,7 +39,7 @@ public class QuadRender extends GameComponent {
         Vector3f XY = getTransform().getPosition();
         Vector2f scale = getTransform().getScale().XY();
 
-        RectanglePrimitive.render((minX * scale.getX() + XY.getX()), (miny) * scale.getY() + XY.getY(), (maxX * scale.getX() + XY.getX()), (maxY * scale.getY() + XY.getY()), XY.getZ(), r, g, b);
+        RectanglePrimitive.render((minX * scale.getX() + XY.getX()), (miny) * scale.getY() + XY.getY(), (maxX * scale.getX() + XY.getX()), (maxY * scale.getY() + XY.getY()), XY.getZ(), r, g, b, a);
 
     }
 }

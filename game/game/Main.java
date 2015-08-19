@@ -6,7 +6,6 @@ import com.threesidedsquare.engine2D.administrative.Logging;
 import com.threesidedsquare.engine2D.core.Game;
 import com.threesidedsquare.engine2D.core.Input;
 import com.threesidedsquare.engine2D.core.math.Vector2f;
-import sun.rmi.runtime.Log;
 
 public class Main extends Game{
 
@@ -28,11 +27,14 @@ public class Main extends Game{
 //        addScene(new TextureTestScene());
         //setActiveScene(TextureTestScene.NAME);
 
-        addScene(new PhysicsTestScene());
-        setActiveScene(PhysicsTestScene.NAME);
+//        addScene(new PhysicsTestScene());
+//        setActiveScene(PhysicsTestScene.NAME);
 
 //        addScene(new QuadtreeTestScene());
 //        setActiveScene(QuadtreeTestScene.NAME);
+
+        addScene(new AdvancedRenderingTestScene());
+        setActiveScene(AdvancedRenderingTestScene.NAME);
     }
 
     @Override
