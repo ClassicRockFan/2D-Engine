@@ -32,9 +32,12 @@ public class Main extends Game{
 
 //        addScene(new QuadtreeTestScene());
 //        setActiveScene(QuadtreeTestScene.NAME);
+//
+//        addScene(new AdvancedRenderingTestScene());
+//        setActiveScene(AdvancedRenderingTestScene.NAME);
 
-        addScene(new AdvancedRenderingTestScene());
-        setActiveScene(AdvancedRenderingTestScene.NAME);
+        addScene(new MenuTestScene());
+        setActiveScene(MenuTestScene.NAME);
     }
 
     @Override

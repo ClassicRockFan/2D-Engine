@@ -26,10 +26,10 @@ public class GameCamera extends GameObject{
     private AABB frustum;
 
     public GameCamera() {
-        this(-Window.getWidth()/2, Window.getWidth()/2, Window.getHeight()/2, -Window.getHeight()/2, -1, 1);
+        this(-Window.getWidth()/2, Window.getWidth()/2, -Window.getHeight()/2, Window.getHeight()/2, 0, 1);
     }
 
-    public GameCamera(double left, double right, double up, double down, double zNear, double zFar) {
+    public GameCamera(double left, double right, double down, double up, double zNear, double zFar) {
         super();
         this.left = left;
         this.right = right;
@@ -41,7 +41,7 @@ public class GameCamera extends GameObject{
 
         this.frustum = new AABB((float) left - 150f, (float) down - 150f, (float) right + 150f, (float) up + 150f);
 
-        //addComponent(new RenderBounding(0, 1, 1, RectanglePrimitive.NO_ALPHA, frustum));
+        addComponent(new RenderBounding(0, 1, 1, RectanglePrimitive.NO_ALPHA, frustum));
         getTransform().getPosition().setZ(1f);
     }
 
@@ -79,13 +79,11 @@ public class GameCamera extends GameObject{
     @Override
     public void render() {
                 Vector3f pos = getTransform().getPosition();
-//        glTranslatef(-pos.getX(), -pos.getY(), 0);
         super.render();
 
         glDisable(GL_BLEND);
         glColor3f(1, 0, 0);
 
-//        Logging.printLog("Drawing frustum - " + frustum);
 
         glBegin(GL_LINES);
         {
@@ -100,7 +98,6 @@ public class GameCamera extends GameObject{
         }
         glEnd();
         glEnable(GL_BLEND);
-//        glTranslatef(pos.getX(), pos.getY(), 0);
     }
 
     public AABB getFrustum() {
