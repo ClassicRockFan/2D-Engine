@@ -23,14 +23,16 @@ public class PhysicsComponent extends GameComponent{
         acceleration = new Vector2f(0, 0);
     }
 
-    public void respond(float delta){
-        Logging.printLog(getParent().toString() +  " collided. pos = (" + getTransform().getPosition().getX() + ", " + getTransform().getPosition().getY() + ")");
+    public void respond(float delta, GameObject other){
+//        Logging.printLog("False Positive? - " + other.getAabb().doesIntersect(getParent().getAabb()));
+
+//        Logging.printLog(getParent().toString() + " Collided with AABB " + getParent().getAabb().toString());
         velocity = velocity.mul(new Vector2f(-1f, -1f));
 
         Vector2f newPos = velocity.mul(new Vector2f(2 * delta, 2 * delta)).add(getTransform().getPosition().XY());
         getTransform().setPosition(new Vector3f(newPos.getX(), newPos.getY(), getTransform().getPosition().getZ()));
 
-        Logging.printLog("New Velocity - " + velocity.toString());
+//        Logging.printLog("New Velocity - " + velocity.toString());
     }
 
     @Override

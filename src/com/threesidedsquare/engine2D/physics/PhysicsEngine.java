@@ -2,8 +2,11 @@ package com.threesidedsquare.engine2D.physics;
 
 import com.threesidedsquare.engine2D.core.CoreEngine;
 import com.threesidedsquare.engine2D.object.GameObject;
+import com.threesidedsquare.engine2D.object.component.GameComponent;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 public class PhysicsEngine {
 
@@ -24,11 +27,21 @@ public class PhysicsEngine {
         for(PhysicsComponent component : components)
             component.simulate(delta);
 
-        for(int i = 0; i < components.size(); i++){
-            for(int j = i + 1; j < components.size(); j++){
-                if(components.get(i).getParent().getAabb().doesIntersect(components.get(j).getParent().getAabb())){
-                    components.get(i).respond(delta);
-                    components.get(j).respond(delta);
+        for(PhysicsComponent component : components){
+            Iterator collisions = engine.getGame().getActiveScene().getQuadtree().queryRange(component.getParent().getAabb()).iterator();
+            if(!collisions.hasNext())
+                continue;
+
+            while (collisions.hasNext()){
+                GameObject object = (GameObject) collisions.next();
+
+                if (object == component.getParent())
+                    continue;
+
+                PhysicsComponent component2 = object.getPhysicsComponent();
+                if(component2 != null && component.getParent().getAabb().doesIntersect(component2.getParent().getAabb())){
+                    component.respond(delta, component2.getParent());
+                    component2.respond(delta, component.getParent());
                 }
             }
         }

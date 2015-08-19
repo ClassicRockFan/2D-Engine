@@ -2,6 +2,7 @@ package com.threesidedsquare.engine2D.object;
 
 import com.threesidedsquare.engine2D.core.Transform;
 import com.threesidedsquare.engine2D.core.math.Vector2f;
+import com.threesidedsquare.engine2D.core.math.Vector3f;
 import com.threesidedsquare.engine2D.object.component.GameComponent;
 import com.threesidedsquare.engine2D.physics.AABB;
 import com.threesidedsquare.engine2D.physics.PhysicsComponent;
@@ -25,7 +26,7 @@ public class GameObject {
     public GameObject(AABB aabb) {
         this.id = counter;
         this.components = new ArrayList<>();
-        this.transform = new Transform();
+        this.transform = new Transform(this);
         this.aabb = aabb;
         this.component = null;
 

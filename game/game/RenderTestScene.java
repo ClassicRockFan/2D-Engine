@@ -24,7 +24,7 @@ public class RenderTestScene extends GameScene{
         float RANGE = 30;
         float RANGE2 = 100;
 
-        for(int i = 0; i < 10000; i++) {
+        for(int i = 0; i < 1; i++) {
             float minX = r.nextFloat() * RANGE;
             float minY = r.nextFloat() * RANGE;
             float maxX = r.nextFloat() * RANGE;
@@ -33,7 +33,7 @@ public class RenderTestScene extends GameScene{
             float green = r.nextFloat();
             float blue = r.nextFloat();
 
-            GameObject object = new GameObject().addComponent(new QuadRender(minX, minY, maxX, maxY, red, green, blue));
+            GameObject object = new GameObject().addComponent(new QuadRender(minX, minY, maxX, maxY, 1, 1, 1));
 
             object.getTransform().setPosition(new Vector3f(r.nextFloat() * RANGE2, r.nextFloat() * RANGE2, 0));
 

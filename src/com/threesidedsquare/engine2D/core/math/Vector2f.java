@@ -21,9 +21,24 @@ public class Vector2f {
         return new Vector2f(x * other.getX(), y * other.getY());
     }
 
-
     public Vector2f div(Vector2f other){
         return new Vector2f(x / other.getX(), y / other.getY());
+    }
+
+    public Vector2f add(float other){
+        return new Vector2f(x + other, y + other);
+    }
+
+    public Vector2f sub(float other){
+        return new Vector2f(x - other, y - other);
+    }
+
+    public Vector2f mul(float other){
+        return new Vector2f(x * other, y * other);
+    }
+
+    public Vector2f div(float other){
+        return new Vector2f(x / other, y / other);
     }
 
     public float length(){
@@ -32,6 +47,8 @@ public class Vector2f {
 
     public Vector2f normalized(){
         float length = length();
+        if(length == 0)
+            return new Vector2f(1, 1);
 
         float x_ = x / length;
         float y_ = y / length;

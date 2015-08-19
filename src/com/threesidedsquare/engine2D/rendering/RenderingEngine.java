@@ -13,7 +13,7 @@ public class RenderingEngine {
     public static void initGL(){
         glMatrixMode(GL_PROJECTION_MATRIX);
         glLoadIdentity();
-        glOrtho(0, Window.getWidth(), 0, Window.getHeight(), -1, 1);
+        glOrtho(-Window.getWidth()/2, Window.getWidth()/2, -Window.getHeight()/2, Window.getHeight()/2, -1, 1);
         glMatrixMode(GL_MODELVIEW);
 
         glDisable(GL_DEPTH_TEST);

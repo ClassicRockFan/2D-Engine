@@ -78,6 +78,8 @@ public class CoreEngine {
 
                 Input.update();
 
+                //stop();
+
                 if (frameCounter >= 1.0) {
 
                     System.out.println("");
@@ -88,7 +90,7 @@ public class CoreEngine {
                     frames = 0;
                     frameCounter = 0;
 
-//                    if(numFrames > 1000)
+//                    if(numFrames > 1)
 //                        stop();
                 }
             }
