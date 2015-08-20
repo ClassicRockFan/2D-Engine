@@ -10,6 +10,7 @@ import com.threesidedsquare.engine2D.physics.AABB;
 import com.threesidedsquare.engine2D.rendering.Texture;
 import com.threesidedsquare.engine2D.rendering.Window;
 import com.threesidedsquare.engine2D.rendering.primitive.RectanglePrimitive;
+import static org.lwjgl.opengl.GL11.*;
 
 public abstract class MenuButton extends GameObject{
 
@@ -17,8 +18,7 @@ public abstract class MenuButton extends GameObject{
     public MenuButton(AABB aabb, Texture texture) {
         super(aabb);
         addComponent(new QuadRenderTexture(aabb.getMinX(), aabb.getMinY(), aabb.getMaxX(), aabb.getMaxY(), texture));
-        Vector2f center = aabb.getCalculatedCenter();
-        getTransform().setPosition(new Vector3f(center.getX(), center.getY(), getTransform().getPosition().getZ()));
+        Logging.printLog("Id of menu Button texture - " + texture.getId());
     }
 
     @Override
@@ -33,9 +33,9 @@ public abstract class MenuButton extends GameObject{
 
             //x-conversion
             if(mousePos.getX() <= (Window.getWidth()/2)){
-                mousePos.setX(new Vector2f((float)(Window.getWidth()/2), 0).sub(new Vector2f(mousePos.getX(), 0)).mul(new Vector2f(-1, 1)).getX());
+                mousePos.setX(new Vector2f((float) (Window.getWidth() / 2), 0).sub(new Vector2f(mousePos.getX(), 0)).mul(new Vector2f(-1, 1)).getX());
             }else{
-                mousePos.setX(new Vector2f((float)(Window.getWidth()/2), 0).sub(new Vector2f((float)(Window.getWidth()), 0).sub(new Vector2f(mousePos.getX(), 0))).getX());
+                mousePos.setX(new Vector2f((float) (Window.getWidth() / 2), 0).sub(new Vector2f((float) (Window.getWidth()), 0).sub(new Vector2f(mousePos.getX(), 0))).getX());
             }
 
             //Y-conversion
@@ -51,6 +51,13 @@ public abstract class MenuButton extends GameObject{
                     mousePos.getY() >= getAabb().getMinY() && mousePos.getY() <= getAabb().getMaxY())
                 handle(delta);
         }
+    }
+
+    @Override
+    public void render() {
+        glDisable(GL_BLEND);
+        super.render();
+        glEnable(GL_BLEND);
     }
 
     public abstract void handle(float delta);

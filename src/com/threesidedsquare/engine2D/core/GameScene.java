@@ -1,6 +1,6 @@
 package com.threesidedsquare.engine2D.core;
 
-import com.threesidedsquare.engine2D.object.GameCamera;
+import com.threesidedsquare.engine2D.rendering.GameCamera;
 import com.threesidedsquare.engine2D.object.GameObject;
 import com.threesidedsquare.engine2D.physics.AABB;
 import com.threesidedsquare.engine2D.physics.Quadtree;

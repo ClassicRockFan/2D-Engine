@@ -16,7 +16,7 @@ public class Sprite extends GameObject{
         super();
         this.texture = texture;
 
-        mainComponent = new QuadRenderTexture(0, 0, texture.getWidth(), texture.getHeight(), texture);
+        mainComponent = new QuadRenderTexture(-texture.getWidth()/2, 0, texture.getWidth()/2, texture.getHeight(), texture);
         addComponent(mainComponent);
     }
 
@@ -27,7 +27,7 @@ public class Sprite extends GameObject{
     public void setTexture(Texture texture) {
         this.texture = texture;
         getComponents().remove(mainComponent);
-        mainComponent = new QuadRenderTexture(-texture.getWidth()/2, -texture.getHeight()/2, texture.getWidth()/2, texture.getHeight()/2, texture);
+        mainComponent = new QuadRenderTexture(-texture.getWidth()/2, 0, texture.getWidth()/2, texture.getHeight(), texture);
         addComponent(mainComponent);
     }
 }

@@ -1,8 +1,5 @@
 package com.threesidedsquare.engine2D.rendering;
 
-import com.threesidedsquare.engine2D.administrative.Logging;
-import com.threesidedsquare.engine2D.core.math.Vector3f;
-import com.threesidedsquare.engine2D.object.GameCamera;
 import com.threesidedsquare.engine2D.object.GameObject;
 
 import java.util.ArrayList;
@@ -17,6 +14,7 @@ public class RenderingEngine {
         glEnable(GL_TEXTURE_2D);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
+
     }
 
     public void render(ArrayList<GameObject> objects) {

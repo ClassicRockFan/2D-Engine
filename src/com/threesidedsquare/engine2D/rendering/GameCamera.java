@@ -1,8 +1,9 @@
-package com.threesidedsquare.engine2D.object;
+package com.threesidedsquare.engine2D.rendering;
 
 import com.threesidedsquare.engine2D.administrative.Logging;
 import com.threesidedsquare.engine2D.core.math.Vector2f;
 import com.threesidedsquare.engine2D.core.math.Vector3f;
+import com.threesidedsquare.engine2D.object.GameObject;
 import com.threesidedsquare.engine2D.object.component.GameComponent;
 import com.threesidedsquare.engine2D.object.component.rendering.RenderBounding;
 import com.threesidedsquare.engine2D.physics.AABB;
@@ -13,7 +14,7 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 
-public class GameCamera extends GameObject{
+public class GameCamera extends GameObject {
 
     private double left;
     private double right;
@@ -26,7 +27,7 @@ public class GameCamera extends GameObject{
     private AABB frustum;
 
     public GameCamera() {
-        this(-Window.getWidth()/2, Window.getWidth()/2, -Window.getHeight()/2, Window.getHeight()/2, 0, 1);
+        this(-Window.getWidth()/2, Window.getWidth()/2, -Window.getHeight()/2, Window.getHeight()/2, -1, 1);
     }
 
     public GameCamera(double left, double right, double down, double up, double zNear, double zFar) {

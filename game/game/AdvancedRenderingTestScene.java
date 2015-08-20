@@ -3,13 +3,12 @@ package game;
 import com.threesidedsquare.engine2D.core.Game;
 import com.threesidedsquare.engine2D.core.GameScene;
 import com.threesidedsquare.engine2D.core.math.Vector3f;
-import com.threesidedsquare.engine2D.object.GameCamera;
+import com.threesidedsquare.engine2D.rendering.GameCamera;
 import com.threesidedsquare.engine2D.object.GameObject;
 import com.threesidedsquare.engine2D.object.component.rendering.RenderBounding;
 import com.threesidedsquare.engine2D.physics.AABB;
 import com.threesidedsquare.engine2D.rendering.RenderingEngine;
 import com.threesidedsquare.engine2D.rendering.Window;
-import com.threesidedsquare.engine2D.rendering.primitive.RectanglePrimitive;
 
 import java.util.Random;
 
